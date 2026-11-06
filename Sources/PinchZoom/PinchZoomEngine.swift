@@ -52,7 +52,12 @@ final class PinchZoomEngine {
     }
 
     private func handle(_ event: NSEvent) {
-        guard isEnabled else { return }
+        // Shift + pinch is left alone, so apps with their own pinch zoom
+        // (Safari, Preview, Maps) zoom their content as usual.
+        guard isEnabled, !event.modifierFlags.contains(.shift) else {
+            pending = 0
+            return
+        }
         if event.phase == .began { pending = 0 }
         pending += event.magnification
         while abs(pending) >= step {

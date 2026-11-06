@@ -10,6 +10,9 @@ PinchZoom watches for two-finger pinches anywhere and sends macOS's own
 Accessibility Zoom shortcuts: pinch out = Cmd+Option+= (zoom in), pinch in =
 Cmd+Option+- (zoom out). The whole screen zooms, in any app.
 
+Hold **Shift** while pinching to skip the screen zoom, so the app's own pinch
+zoom (Safari, Preview, Maps) works as usual.
+
 Faking Option/Control + scroll does not work: macOS Zoom ignores synthetic
 scroll events. The keyboard shortcuts are accepted.
 
@@ -39,12 +42,15 @@ open /Applications/PinchZoom.app
 
 - Sensitivity: `PINCHZOOM_STEP` env var, pinch amount per zoom step (default `0.08`, smaller = faster).
 - Toggle / quit: menu-bar icon. The app also shows in the Dock.
+- About: menu-bar icon → *About PinchZoom* shows the version and the
+  Shift + pinch tip.
 - Log: `~/Library/Logs/PinchZoom.log`.
 
 ## Known limitations
 
 - Zoom moves in steps (one shortcut press each), not perfectly smooth.
 - Apps with their own pinch (Safari, Preview, Maps) zoom their content too.
+  Hold Shift to zoom only the app.
 
 ## Releases
 

@@ -27,10 +27,33 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         enabledItem.state = .on
         menu.addItem(enabledItem)
         menu.addItem(.separator())
+        let aboutItem = NSMenuItem(title: "About PinchZoom",
+                                   action: #selector(showAbout),
+                                   keyEquivalent: "")
+        aboutItem.target = self
+        menu.addItem(aboutItem)
         menu.addItem(NSMenuItem(title: "Quit PinchZoom",
                                  action: #selector(NSApplication.terminate(_:)),
                                  keyEquivalent: "q"))
         statusItem.menu = menu
+    }
+
+    @objc private func showAbout() {
+        let credits = NSMutableAttributedString(string: """
+            Pinch on the trackpad to zoom the whole screen, in any app.
+
+            Hold Shift while pinching to zoom only inside the app \
+            (Safari, Preview, Maps), without zooming the screen.
+
+            Needs Accessibility permission, and "Use keyboard shortcuts \
+            to zoom" in System Settings → Accessibility → Zoom.
+
+            github.com/puchkoff/pinch-zoom
+            """, attributes: [.font: NSFont.systemFont(ofSize: 14)])
+        let link = (credits.string as NSString).range(of: "github.com/puchkoff/pinch-zoom")
+        credits.addAttribute(.link, value: "https://github.com/puchkoff/pinch-zoom", range: link)
+        NSApp.activate(ignoringOtherApps: true)
+        NSApp.orderFrontStandardAboutPanel(options: [.credits: credits])
     }
 
     @objc private func toggleEnabled() {
