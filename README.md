@@ -4,7 +4,7 @@
 
 Two-finger pinch anywhere → whole-screen zoom, everywhere.
 
-<p align="center"><img src="docs/demo.gif" width="720" alt="Pinching out on the trackpad zooms the whole screen in, pinching in zooms it back out"></p>
+<p align="center"><img src="docs/pinch-zoom-demo.gif" width="720" alt="Pinching out on the trackpad zooms the whole screen in, pinching in zooms it back out"></p>
 
 <sub>Animated illustration. macOS screen recordings can't capture Accessibility Zoom, so this is a rendered demo.</sub>
 
