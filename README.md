@@ -17,10 +17,17 @@ scroll events. The keyboard shortcuts are accepted.
 
 - System Settings → Accessibility → Zoom → **Use keyboard shortcuts to zoom** ON.
 - System Settings → Privacy & Security → **Accessibility** → PinchZoom ON.
-  Every rebuild changes the ad-hoc signature, so re-grant after each install:
-  `tccutil reset Accessibility com.puchkoff.pinchzoom`, relaunch, re-enable.
+  Grant it once. Builds are signed with a fixed certificate, so the
+  permission survives updates (see [SIGNING.md](SIGNING.md)).
 
 ## Install
+
+Download `PinchZoom.app.zip` from
+[Releases](https://github.com/puchkoff/pinch-zoom/releases), unzip it, move
+`PinchZoom.app` to `/Applications`, then run
+`xattr -dr com.apple.quarantine /Applications/PinchZoom.app`.
+
+Or build from source:
 
 ```bash
 scripts/build-app.sh
@@ -38,6 +45,11 @@ open /Applications/PinchZoom.app
 
 - Zoom moves in steps (one shortcut press each), not perfectly smooth.
 - Apps with their own pinch (Safari, Preview, Maps) zoom their content too.
+
+## Releases
+
+`scripts/release.sh 1.2.0` builds, signs, tags, and publishes a release.
+See [SIGNING.md](SIGNING.md).
 
 ## License
 
